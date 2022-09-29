@@ -8,8 +8,6 @@ from orders.models import Order
 from products.models import Product
 from address.models import Address
 
-from orders.serializers import OrderSerializer
-
 ORDER_URL = reverse('orders:orders-list')
 
 
@@ -58,7 +56,7 @@ class privateOrderApiTest(TestCase):
         product = self.product
         address = self.address
         Order.objects.create(
-            order_code='ABC-DEF-GH', 
+            order_code='ABC-DEF-GH',
             status=True,
             product_id=product,
             user_id=user,
@@ -75,34 +73,27 @@ class privateOrderApiTest(TestCase):
             user_id=user,
             address_id=address,
             unit_price=product.price,
-            quantity=5, 
+            quantity=5,
             note='My Goods'
         )
-        
+
         res = self.client.get(ORDER_URL)
-        
-        orders = Order.objects.filter(user_id=user.id).order_by('id')
-        serializer = OrderSerializer(orders, many=True)
+
         self.assertEqual(res.status_code, status.HTTP_200_OK)
         self.assertContains(res, user.id)
-            
-    
+
     def test_create_order_successful(self):
         """Test user create order successful"""
-        user = self.user
-        product = self.product
-        address = self.address
-       
         payload = {
-            'order_code':'ABC-GH-JKL', 
-            'status':True,
-            'product_id':product.id,
-            'user_id':user.id,
-            'address_id':address.id, 
-            'unit_price':product.price, 
-            'quantity':5, 
-            'note':'My Goods'
+            'order_code': 'ABC-GH-JKL',
+            'status': True,
+            'product_id': self.product.id,
+            'user_id': self.user.id,
+            'address_id': self.address.id,
+            'unit_price': self.product.price,
+            'quantity': 5,
+            'note': 'My Goods'
         }
         res = self.client.post(ORDER_URL, payload)
-        
+
         self.assertEqual(res.status_code, status.HTTP_201_CREATED)

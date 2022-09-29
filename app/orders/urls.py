@@ -10,5 +10,7 @@ app_name = 'orders'
 
 urlpatterns = [
     path('', include(router.urls)),
-    path('update/<int:pk>', views.UpdateOrderView.as_view(), name='update-order'),
+    path('update/<int:pk>',
+         views.UpdateOrderView.as_view(),
+         name='update-order'),
 ]

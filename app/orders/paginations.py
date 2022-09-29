@@ -1,5 +1,6 @@
 from rest_framework import pagination
 
+
 class CustomPagination(pagination.PageNumberPagination):
     """Custom pagination for orders"""
     page_size = 20
