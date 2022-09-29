@@ -79,4 +79,14 @@ $ docker-compose up
     {{base_url}}api/order/4/
 
 
+# Deployment Instructions for AWS
+# Step to Deploy a Docker Container on EC2
+    1. SSH onto the EC2 Instance.
+    2. Generate a public SSH key for Github SSH permissions.
+    3. Copy the EC2 user’s public key.
+    4. Add the EC2 public key to the Github account with ownership access to the repository.
+    5. Set up the repo on the server.
+    6. Start the Docker container.
+
+
 

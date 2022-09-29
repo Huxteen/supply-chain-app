@@ -4,6 +4,10 @@ LABEL website="Husteen Internet Solutions"
 
 ENV PYTHONUNBUFFERED 1
 
+RUN apt-get update \
+    && apt-get install gcc -y \
+    && apt-get clean
+
 COPY ./requirements.txt /requirements.txt
 RUN python -m pip install --upgrade pip
 
