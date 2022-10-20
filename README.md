@@ -20,6 +20,13 @@ $ docker-compose run app sh -c "python manage.py test && flake8"
 # start project
 $ docker-compose up
 
+# API Documentation Endpoint
+ {{base_url}}/swagger/schema/
+
+
+
+ 
+
 
 ## About Supply Chain App
 The supply chain app has a list of product and customer can order our product using their phone. This project is the backend that supply the data to the mobile app. The backend comprises of different app that make up this project namely:
