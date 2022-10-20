@@ -22,9 +22,9 @@ from drf_yasg.views import get_schema_view as swagger_get_schema_view
 
 schema_view = swagger_get_schema_view(
     openapi.Info(
-        title="Supply Chain APP API",
+        title="Supply Chain API",
         default_version="1.0.0",
-        description="API documentation for supply chain app",
+        description="API documentation for supply chain app.",
     ),
     public=True,
 )
