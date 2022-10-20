@@ -16,10 +16,26 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+from drf_yasg import openapi
+from drf_yasg.views import get_schema_view as swagger_get_schema_view
+
+
+schema_view = swagger_get_schema_view(
+    openapi.Info(
+        title="Supply Chain APP API",
+        default_version="1.0.0",
+        description="API documentation for supply chain app",
+    ),
+    public=True,
+)
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/accounts/', include('accounts.urls')),
     path('api/products/', include('products.urls')),
     path('api/address/', include('address.urls')),
     path('api/orders/', include('orders.urls')),
+    path('swagger/schema/', schema_view.with_ui(
+        'swagger', cache_timeout=0),
+         name="swagger-schema"),
 ]
